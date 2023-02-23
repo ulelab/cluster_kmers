@@ -45,8 +45,6 @@ def cli():
                         Length of consensus sequence to name k-mer groups. Automatically this length is determined as k-mer length - 1.
                         Valid choices are "auto" or integer.
                         """)
-
-    parser._action_groups.append(optional)
     args = parser.parse_args()
     print(args)
 
