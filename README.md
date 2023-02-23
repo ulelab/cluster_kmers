@@ -3,7 +3,7 @@ Get clusters of k-mers based solely on their sequence or in combination with enr
 
 ## Installation
 
-```pip install git+https://github.com/ulelab/cluster_kmers.git```
+```pip install git+https://github.com/ulelab/cluster_kmers.git@master```
 
 
 ## Usage
