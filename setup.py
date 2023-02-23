@@ -14,7 +14,7 @@ requirements = [
 ]
 
 setup(name='cluster_kmers',
-      version='0',
+      version='0.0.1',
       description='cluster_kmers',
       url='http://github.com/ulelab/cluster_kmers',
       author='Klara Kuret',
