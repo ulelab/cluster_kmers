@@ -165,7 +165,7 @@ def cluster_kmers(kmers, cluster_on='seq', n_clusters='auto', peka_files=None, r
                 ax.text(0.8, 0.8, f'n = {len(motifs)}', transform=ax.transAxes)
                 fig.savefig(f'{results_folder}/weblogos/Logo_cluster_{g}_{consensus}.pdf', bbox_inches='tight')
     df_out.to_csv(f'{results_folder}/ClusteredKmers_NClusters_{str(n_clusters)}_Mode_{str(cluster_on)}.tsv', sep='\t', index=False)
-    dist_matx.to_csv(f'{results_folder}/KmerDistanceMatrix_Mode_{str(cluster_on)}.tsv', sep='\t', index=False)
+    dist_matx.to_csv(f'{results_folder}/KmerDistanceMatrix_Mode_{str(cluster_on)}.tsv', sep='\t')
     return
 
 def main():
