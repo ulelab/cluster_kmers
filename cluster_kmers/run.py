@@ -14,14 +14,14 @@ def cli():
         prog = 'cluster_kmers',
         description='Cluster k-mers based on sequence or on a combination of sequence and enrichment in CLIP data.'
         )
-    optional = parser._action_groups.pop()
+    parser._action_groups.pop()
     required = parser.add_argument_group('required arguments')
     required.add_argument('-k',"--kmers", type=str, nargs='+', required=True, dest='kmers',
                         help='A list of k-mers encoded in RNA alphabet separated by spaces: AAGG GGAG GCCU.')
     required.add_argument('-o',"--output_folder", type=str, required=True, dest='results_folder',
                         help='A path to an existing output folder, for example "~/results"')
 
-    optional = parser._action_groups.pop()
+    optional = parser.add_argument_group('optional arguments')
     optional.add_argument('-co',"--cluster_on", type=str, choices=['seq', 'seq_enrichment'], dest='cluster_on', default='seq', required=False,
                         help="""
                         Inputs to clustering. Valid options are:
