@@ -1,0 +1,17 @@
+name: cluster_kmers
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - textdistance
+  - seaborn
+  - scipy
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - numpy
+  - scikit-bio
+  - logomaker
+  - seqlogo
