@@ -2,7 +2,7 @@
 kmers=$(<test_kmers.txt)
 peka_files=$(ls *5mer_distribution_UTR3.tsv)
 
-python3 ../src/cluster_kmers.py \
+cluster_kmers \
 -k $kmers \
 -o ./results \
 -p $peka_files \
