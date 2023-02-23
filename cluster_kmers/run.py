@@ -3,8 +3,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import zscore
-import cluster_kmers.get_clustering as clust
-import cluster_kmers.get_alignment as align
+import get_clustering as clust
+import get_alignment as align
 from distutils.util import strtobool
 import argparse
 import os
@@ -165,6 +165,7 @@ def cluster_kmers(kmers, cluster_on='seq', n_clusters='auto', peka_files=None, r
                 ax.text(0.8, 0.8, f'n = {len(motifs)}', transform=ax.transAxes)
                 fig.savefig(f'{results_folder}/weblogos/Logo_cluster_{g}_{consensus}.pdf', bbox_inches='tight')
     df_out.to_csv(f'{results_folder}/ClusteredKmers_NClusters_{str(n_clusters)}_Mode_{str(cluster_on)}.tsv', sep='\t', index=False)
+    print(dist_matx.head())
     dist_matx.to_csv(f'{results_folder}/KmerDistanceMatrix_Mode_{str(cluster_on)}.tsv', sep='\t', header=True, index=True)
     return
 
