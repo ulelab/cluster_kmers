@@ -22,25 +22,25 @@ def cli():
                         help='A path to an existing output folder, for example "~/results"')
 
     optional = parser._action_groups.pop()
-    optional.add_argument('-co',"--cluster_on", type=str, choices=['seq', 'seq_enrichment'], dest='cluster_on', default='seq',
+    optional.add_argument('-co',"--cluster_on", type=str, choices=['seq', 'seq_enrichment'], dest='cluster_on', default='seq', required=False,
                         help="""
                         Inputs to clustering. Valid options are:
                         seq - Cluster only based on sequence similarity.
                         seq_enrichment - Cluster based on sequence similarity and based on enrichment of motifs in CLIP data
                                          (this option requires arguments passed to -peka)
                         """)
-    optional.add_argument('-n',"--n_clusters", dest='n_clusters', type=(lambda x: 'auto' if str(x) == 'auto' else int(x)), default='auto',
+    optional.add_argument('-n',"--n_clusters", dest='n_clusters', type=(lambda x: 'auto' if str(x) == 'auto' else int(x)), default='auto', required=False,
                         help='Number of clusters to split k-mers into. Valid options are "auto" or integer. Default is "auto".')
-    optional.add_argument('-peka',"--peka_files", nargs='+', dest='peka_files', default=None,
+    optional.add_argument('-peka',"--peka_files", nargs='+', dest='peka_files', default=None, required=False,
                         help='A list of peka output files with extensions *mer_distribution_{region_name}.tsv, separated by spaces.')
-    optional.add_argument('-tl',"--min_token_length", type=int, default=1, dest='min_token_length',
+    optional.add_argument('-tl',"--min_token_length", type=int, default=1, dest='min_token_length', required=False,
                         help="""
                         Minimal length of a substrings used for clustering. For k-mers with lengths greater than 5, setting this value
                         to be greater than 1 can improve the results of clustering.
                         """)
-    optional.add_argument('-wl',"--weblogos", dest='weblogos', default='True', type=(lambda x:bool(strtobool(x))), choices=[True, False],
+    optional.add_argument('-wl',"--weblogos", dest='weblogos', default='True', type=(lambda x:bool(strtobool(x))), choices=[True, False], required=False,
                         help='Whether to plot weblogos for motif groups, True by default.')
-    optional.add_argument('-cons',"--consensus_length", dest='consensus_length', default='auto', type=(lambda x: 'auto' if str(x) == 'auto' else int(x)),
+    optional.add_argument('-cons',"--consensus_length", dest='consensus_length', default='auto', type=(lambda x: 'auto' if str(x) == 'auto' else int(x)), required=False,
                         help="""
                         Length of consensus sequence to name k-mer groups. Automatically this length is determined as k-mer length - 1.
                         Valid choices are "auto" or integer.
