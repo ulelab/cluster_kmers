@@ -5,7 +5,13 @@ Get clusters of k-mers based solely on their sequence or in combination with enr
 
 ## Installation
 
-```pip install git+https://github.com/ulelab/cluster_kmers.git@master```
+```
+conda create -n cluster_kmers
+conda activate cluster_kmers
+# Python must be >=3.8 or <=3.11 to support SciPy 1.9
+conda install python=3.9 pip
+pip install git+https://github.com/ulelab/cluster_kmers.git@master
+```
 
 
 ## Usage
