@@ -10,11 +10,12 @@ import seqlogo
 warnings.filterwarnings("ignore", message="You're using skbio's python implementation of Needleman-Wunsch alignment.")
 
 # To be able to access IUPAC codes from this script
-# Get the directory of the current file (script C)
+import pkg_resources
 import os
 script_dir = os.path.dirname(os.path.realpath(__file__))
-# Construct the path to the resource file
-resource_file_path = os.path.join(script_dir, '../res/', 'IUPAC_nt_code.csv')
+# Construct the path to the resource file as it is installed in the package (pip install)
+resource_file_path = pkg_resources.resource_filename('cluster_kmers', 'res/IUPAC_nt_code.csv')
+# resource_file_path = os.path.join(script_dir, '../res/', 'IUPAC_nt_code.csv')
 
 
 def get_prefix_suffix(j, motif):
