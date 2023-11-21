@@ -9,6 +9,12 @@ import seaborn as sns
 import seqlogo
 warnings.filterwarnings("ignore", message="You're using skbio's python implementation of Needleman-Wunsch alignment.")
 
+# To be able to access IUPAC codes from this script
+# Get the directory of the current file (script C)
+import os
+script_dir = os.path.dirname(os.path.realpath(__file__))
+# Construct the path to the resource file
+resource_file_path = os.path.join(script_dir, '../res/', 'IUPAC_nt_code.csv')
 
 
 def get_prefix_suffix(j, motif):
@@ -67,7 +73,7 @@ def get_alignment(mots, match_s=2, missm_s=-1):
         remaining_mots = [m for m in mots if m not in aligned]
     return aligned_sequences
 
-def get_consensus(aligned, df_iupac_codes='../res/IUPAC_nt_code.csv', l=5):
+def get_consensus(aligned, df_iupac_codes=resource_file_path, l=5):
     #Generate consensus
     df_consensus = pd.DataFrame(0, columns=[i for i in range(len(aligned[0]))], index=['U', 'G', 'C', 'A'])
     for s in aligned:
@@ -95,7 +101,7 @@ def get_consensus(aligned, df_iupac_codes='../res/IUPAC_nt_code.csv', l=5):
     consensus = ''.join(df_sequence.loc[start:end, 'nt'].values.tolist())
     return consensus, df_sequence
 
-def get_consensus_from_motifs(mots, l=4, iupac_path='../res/IUPAC_nt_code.csv', match_s=2, missm_s=-1):
+def get_consensus_from_motifs(mots, l=4, iupac_path=resource_file_path, match_s=2, missm_s=-1):
     aligned_sequences = get_alignment(mots, match_s, missm_s)
     #Import iupac code to make consensuses
     df_iupac_codes = pd.read_csv(iupac_path, sep='\t')
