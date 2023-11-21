@@ -23,6 +23,7 @@ setup(name='cluster_kmers',
       install_requires=requirements,
       packages=['cluster_kmers'],
       include_package_data=True,
-      python_requires=">=3.6",
+      package_data={'cluster_kmers': ['res/*']},
+      python_requires=">=3.8, <3.12",
       entry_points={"console_scripts": ["cluster_kmers=cluster_kmers.run:main",],},
       zip_safe=False)
